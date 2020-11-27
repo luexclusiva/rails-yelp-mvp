@@ -1,0 +1,37 @@
+<div class="container mt-3">
+
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
+  </p>
+  <p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+  </p>
+  <p>
+    <strong>Phone number:</strong>
+    <%= @restaurant.phone_number %>
+  </p>
+  <p> <strong>Category:</strong>
+    <%= @restaurant.category %>
+  </p>
+  <br>
+  
+  <h4>Reviews</h4>
+  <hr>
+  <% @restaurant.reviews.each do |review| %>
+    <p> <%= review.content %> </p>
+    <p> Rating: <%= review.rating %> </p>
+    <hr>
+  <% end %>
+
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit class: 'btn btn-info' %>
+  <% end %>
+  <br>
+  <%= link_to 'Back to the restaurants', restaurants_path, class: "btn btn-primary" %>
+
+</div>
